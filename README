@@ -1,0 +1,19 @@
+# Introdution to c++
+
+C++ is an object-oriented programming language, which means it allows you to define classes and objects to model real words entities and their behavior.
+
+## Object Oriented programming in C++
+Object oriented programming aims to implemente real-world entities like inheritance, hiding, polymorphism, etc in programming 
+
+These are some basic concepts  that act as the building blocks of OPPs:
+-	Class
+-	Object
+-	Encapsulation
+-	Abstraction
+-	Polymorphism
+-	Inheritance
+-	Dynamic binding
+-	Message passing
+
+### Class
+A class ia user-defined data type that has data members ans members functions.
