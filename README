@@ -2,6 +2,10 @@
 
 C++ is an object-oriented programming language, which means it allows you to define classes and objects to model real words entities and their behavior.
 
+## Name convections
+### Private atributte in a class
+
+
 ## Object Oriented programming in C++
 Object oriented programming aims to implemente real-world entities like inheritance, hiding, polymorphism, etc in programming 
 
