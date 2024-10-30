@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:29:58 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/30 16:41:04 by natalia       ########   odam.nl         */
+/*   Updated: 2024/10/30 18:14:55 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 
 class PhoneBook
 {
-private:
-	Contact	contactList[8];
-	int		index;
+	private:
+		Contact	contactList[8];
+		int		index;
 
-public:
-	PhoneBook();
-	~PhoneBook();
-	void	Add();
-	void	Search();
-	void	Exit();
-	void	PrintContacts();
-	int		GetOldestIndex();
+	public:
+		PhoneBook();
+		~PhoneBook();
+		void	Add();
+		void	Search();
+		void	Exit();
+		void	PrintContacts();
+		int		GetOldestIndex();
 };
 
 #endif

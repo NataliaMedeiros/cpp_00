@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:49:02 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/30 16:54:51 by natalia       ########   odam.nl         */
+/*   Updated: 2024/10/30 18:38:50 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ PhoneBook::PhoneBook()
 	std::cout << "EXIT to leave the phonebook" << std::endl;
 	std::cout << "Which operation do you want to do?" << std::endl;
 	std::cout << ">>";
+	index = 1;
 }
 
 PhoneBook::~PhoneBook()
@@ -30,50 +31,24 @@ PhoneBook::~PhoneBook()
 void PhoneBook::Add()
 {
 	std::string firstName, lastName, nickname, phoneNumber, secret, res;
-	int	i;
-	int	index;
+	int i;
 
-	i = 0;
-	while (!this->contactList[i].IsEmpty() && i != 7)
-		i++;
-	index = i + 1;
-	if (!this->contactList[7].IsEmpty())
-	{
+	i = index % 8 - 1;
+	if (i < 0)
+		i = 7;
+	// if (index > 8)
+	// {
 		// std::cout << "The phonebook is full, the oldest contact will be replaced" << std::endl;
-		std::cout << "The phonebook is full, do you want to replace the oldest contact?(yes/no)" << std::endl;
-		std::cin >> res;
-		while (res != "yes" && res != "no")
-		{
-			std::cout << "Type yes or no" <<std::endl;
-			std::cin >> res;
-		}
-		if (res == "no")
-			return ;
-		int	max_index = 0;
-		int j = 0;
-		while (j <=7 )
-		{
-			if (this->contactList[j].GetIndex() > max_index)
-				max_index = this->contactList[j].GetIndex();
-			j++;
-		}
-		j = 0;
-		std::cout << "Max index: "; std::cout << max_index << std::endl;
-		int min_index = max_index;
-		while(j <= 7)
-		{
-			if (this->contactList[j].GetIndex() < min_index)
-				min_index = this->contactList[j].GetIndex();
-			j++;
-		}
-		std::cout << "Min index: "; std::cout << min_index << std::endl;
-		i = min_index - 1;//erro nessa linha
-		index = min_index + max_index - i;
-		if (min_index == 1)
-			index = min_index + max_index;
-		std::cout << "index: "; std::cout << index << std::endl;
-	}
-	std::cout << "i: "; std::cout << i << std::endl;
+		// std::cout << "The phonebook is full, do you want to replace the oldest contact?(yes/no)" << std::endl;
+		// std::cin >> res;
+		// while (res != "yes" && res != "no")
+		// {
+		// 	std::cout << "Type yes or no" <<std::endl;
+		// 	std::cin >> res;
+		// }
+		// if (res == "no")
+		// 	return ;
+	// }
 	std::cout << "First Name: ", std::cin >> firstName;
 	// std::cout << "Last Name: ", std::cin >> lastName;
 	// std::cout << "Nickname: ", std::cin >> nickname;
@@ -92,6 +67,7 @@ void PhoneBook::Add()
 	// std::cout << this->contactList[i].GetNickname() << std::endl;
 	// std::cout << this->contactList[i].GetPhoneNumber() << std::endl;
 	// std::cout << this->contactList[i].GetSecret() << std::endl;
+	index++;
 }
 
 void PhoneBook::Search()

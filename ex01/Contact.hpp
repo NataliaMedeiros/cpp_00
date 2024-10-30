@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:10:04 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/30 15:07:53 by natalia       ########   odam.nl         */
+/*   Updated: 2024/10/30 18:21:53 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 #include <iostream>
+
 
 class Contact
 {
@@ -42,7 +43,6 @@ class Contact
 		void	SetPhoneNumber(std::string phoneNumber);
 		void	SetSecret(std::string darkestSecret);
 		void	SetIndex(int index);
-		bool	IsEmpty();
 };
 
 #endif

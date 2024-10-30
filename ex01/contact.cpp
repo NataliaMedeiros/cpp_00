@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:28:34 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/30 15:08:44 by natalia       ########   odam.nl         */
+/*   Updated: 2024/10/30 18:21:49 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Contact::Contact()
 {
+	// this->firstName = "";
 }
 
 Contact::~Contact()
@@ -78,9 +79,4 @@ void	Contact::SetSecret(std::string darkestSecret)
 void	Contact::SetIndex(int index)
 {
 	this->index = index;
-}
-
-bool	Contact::IsEmpty()
-{
-	return (this->firstName.empty());
 }
