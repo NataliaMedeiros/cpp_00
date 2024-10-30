@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   PhoneBook.hpp                                      :+:    :+:            */
+/*   main.cpp                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/10/30 13:29:58 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/30 16:41:04 by natalia       ########   odam.nl         */
+/*   Created: 2024/10/30 13:59:26 by natalia       #+#    #+#                 */
+/*   Updated: 2024/10/30 15:00:54 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "PhoneBook.hpp"
 
-#include "Contact.hpp"
-#include <iostream>
-
-class PhoneBook
+int	main(void)
 {
-private:
-	Contact	contactList[8];
-	int		index;
+	PhoneBook	phoneBook;
+	std::string	input;
 
-public:
-	PhoneBook();
-	~PhoneBook();
-	void	Add();
-	void	Search();
-	void	Exit();
-	void	PrintContacts();
-	int		GetOldestIndex();
-};
-
-#endif
+	while (1)
+	{
+		std::cin >> input;
+		if (input == "EXIT")
+			break;
+		if (input == "ADD")
+			phoneBook.Add();
+		else if (input == "SEARCH")
+			phoneBook.Search();
+		std::cout << ">>";
+	}
+	std::cout << std::endl;
+	return (0);
+}
