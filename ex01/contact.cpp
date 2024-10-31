@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:28:34 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/30 18:21:49 by natalia       ########   odam.nl         */
+/*   Updated: 2024/10/31 11:38:51 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,45 @@ void	Contact::SetSecret(std::string darkestSecret)
 void	Contact::SetIndex(int index)
 {
 	this->index = index;
+}
+
+void	Contact::Resize(std::string str)
+{
+	int	len;
+
+	len = str.size();
+	if (len > 10)
+	{
+		str.resize(10);
+		str[9] = '.';
+		std::cout << str;
+	}
+	else
+	{
+		len = 10 - len;
+		while (len > 0)
+		{
+			std::cout << " ";
+			len--;
+		}
+		// AddSpaces(str);
+		std::cout << str;
+	}
+}
+
+void	Contact::PrintContact()
+{
+	// std::cout << "   Index  |First Name| Last Name| Nickname |" << std::endl;
+	// std::cout << "--------------------------------------------" << std::endl;
+	std::cout << "Index: " << GetIndex() << std::endl;
+	// std::cout << std::endl;
+	std::cout << "First Name: " << GetFirstName() << std::endl;
+	// std::cout << "|";
+	std::cout << "Last Name: " << GetLastName() << std::endl;
+	// std::cout << "|";
+	std::cout << "Nickname: " << GetNickname() << std::endl;
+	std::cout << "Phone Number: " << GetPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret: " << GetSecret() << std::endl;
+	// std::cout << "|";
+	// std::cout << std::endl;
 }

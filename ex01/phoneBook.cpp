@@ -6,10 +6,12 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:49:02 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/30 18:38:50 by natalia       ########   odam.nl         */
+/*   Updated: 2024/10/31 11:27:40 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* cin -> get the line up to the first space
+	getLine -> get the role line*/
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
@@ -33,9 +35,10 @@ void PhoneBook::Add()
 	std::string firstName, lastName, nickname, phoneNumber, secret, res;
 	int i;
 
-	i = index % 8 - 1;
-	if (i < 0)
-		i = 7;
+	i = (index % 8 - 1) < 0 ? 7 : index % 8 -1; //if else condition in just one line
+	// i = index % 8 - 1;
+	// if (i < 0)
+	// 	i = 7;
 	// if (index > 8)
 	// {
 		// std::cout << "The phonebook is full, the oldest contact will be replaced" << std::endl;
@@ -49,35 +52,40 @@ void PhoneBook::Add()
 		// if (res == "no")
 		// 	return ;
 	// }
-	std::cout << "First Name: ", std::cin >> firstName;
-	// std::cout << "Last Name: ", std::cin >> lastName;
-	// std::cout << "Nickname: ", std::cin >> nickname;
-	// std::cout << "Phone Number: ", std::cin >> phoneNumber;
-	// std::cout << "Darkest Secret: ", std::cin >> secret;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cout << "First Name: ", std::getline(std::cin, firstName);
+	std::cout << "Last Name: ", std::getline(std::cin, lastName);
+	std::cout << "Nickname: ", std::getline(std::cin, nickname);
+	std::cout << "Phone Number: ", std::getline(std::cin, phoneNumber);
+	std::cout << "Darkest Secret: ", std::getline(std::cin, secret);
 
 	this->contactList[i].SetIndex(index);
 	this->contactList[i].SetFirstName(firstName);
-	// this->contactList[i].SetLastName(lastName);
-	// this->contactList[i].SetNickname(nickname);
-	// this->contactList[i].SetPhoneNumber(phoneNumber);
-	// this->contactList[i].SetSecret(secret);
+	this->contactList[i].SetLastName(lastName);
+	this->contactList[i].SetNickname(nickname);
+	this->contactList[i].SetPhoneNumber(phoneNumber);
+	this->contactList[i].SetSecret(secret);
 
-	// std::cout << this->contactList[i].GetFirstName() << std::endl;
-	// std::cout << this->contactList[i].GetLastName() << std::endl;
-	// std::cout << this->contactList[i].GetNickname() << std::endl;
-	// std::cout << this->contactList[i].GetPhoneNumber() << std::endl;
-	// std::cout << this->contactList[i].GetSecret() << std::endl;
 	index++;
 }
 
 void PhoneBook::Search()
 {
+	int	contact_index;
+	int	i;
+
+	if (contactList[0].GetFirstName().empty())
+	{
+		std::cout << "The PhoneBook is currently empty" << std::endl;
+		return ;
+	}
 	this->PrintContacts();
-}
-
-void PhoneBook::Exit()
-{
-
+	std::cout << "Provide the Contact's index you want to: ", std::cin >> contact_index;
+	i = (contact_index % 8 - 1) < 0 ? 7 : contact_index % 8 -1;
+	if (contactList[i].GetFirstName().empty())
+		std::cout << "This contact's index is empty" << std::endl;
+	else
+		contactList[i].PrintContact();
 }
 
 void PhoneBook::PrintContacts()
@@ -85,30 +93,20 @@ void PhoneBook::PrintContacts()
 	int	i;
 
 	i = 0;
-	std::cout << "Index | First Name | Last Name | Nickname" << std::endl;
-	std::cout << "-----------------------------------------" << std::endl;
-	while (i <= 7) //can I use for loop?
+	std::cout << "   Index  |First Name| Last Name| Nickname |" << std::endl;
+	std::cout << "--------------------------------------------" << std::endl;
+	while (i < index - 1) //can I use for loop?
 	{
-		std::cout << this->contactList[i].GetIndex(); std::cout << " | ";
-		std::cout << this->contactList[i].GetFirstName() << std::cout << " | ";
-		std::cout << this->contactList[i].GetLastName() << std::cout << " | ";
-		std::cout << this->contactList[i].GetNickname() << std::cout << " | ";
+		contactList[i].Resize(std::to_string(contactList[i].GetIndex()));
+		std::cout << "|";
+		contactList[i].Resize(contactList[i].GetFirstName());
+		std::cout << "|";
+		contactList[i].Resize(contactList[i].GetLastName());
+		std::cout << "|";
+		contactList[i].Resize(contactList[i].GetNickname());
+		std::cout << "|";
 		std::cout << std::endl;
-		// std::cout << "-----------------------------------------" << std::endl;
+		std::cout << "-----------------------------------------" << std::endl;
 		i++;
 	}
-}
-int PhoneBook::GetOldestIndex()
-{
-	int	oldestIndex;
-
-	oldestIndex = 8;
-	// while(j <= 7)
-	// 	{
-	// 		if (this->contactList[j].GetIndex() < min_index)
-	// 			min_index = this->contactList[j].GetIndex();
-	// 		j++;
-	// 	}
-	// 	std::cout << "Min index: "; std::cout << min_index << std::endl;
-	return (oldestIndex);
 }
