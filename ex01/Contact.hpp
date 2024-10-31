@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:10:04 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/31 11:23:41 by natalia       ########   odam.nl         */
+/*   Updated: 2024/10/31 13:37:48 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ class Contact
 		std::string	GetPhoneNumber();
 		int			GetIndex();
 
-		void	SetFirstName(std::string firstName);
-		void	SetLastName(std::string lastName);
-		void	SetNickname(std::string nickename);
-		void	SetPhoneNumber(std::string phoneNumber);
-		void	SetSecret(std::string darkestSecret);
-		void	SetIndex(int index);
+		void		SetFirstName(std::string firstName);
+		void		SetLastName(std::string lastName);
+		void		SetNickname(std::string nickename);
+		void		SetPhoneNumber(std::string phoneNumber);
+		void		SetSecret(std::string darkestSecret);
+		void		SetIndex(int index);
 
-		void	Resize(std::string str);
-		void	PrintContact();
+		void		Resize(std::string str);
+		void		PrintContact();
 };
 
 #endif

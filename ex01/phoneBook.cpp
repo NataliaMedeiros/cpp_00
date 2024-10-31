@@ -6,12 +6,15 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:49:02 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/31 11:27:40 by natalia       ########   odam.nl         */
+/*   Updated: 2024/10/31 13:38:35 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* cin -> get the line up to the first space
-	getLine -> get the role line*/
+/*
+cin -> get the line up to the first space
+getLine -> get the role line
+*/
+
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
@@ -95,7 +98,7 @@ void PhoneBook::PrintContacts()
 	i = 0;
 	std::cout << "   Index  |First Name| Last Name| Nickname |" << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
-	while (i < index - 1) //can I use for loop?
+	while (i < index - 1)
 	{
 		contactList[i].Resize(std::to_string(contactList[i].GetIndex()));
 		std::cout << "|";
