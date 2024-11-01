@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/31 13:48:43 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/31 15:04:06 by natalia       ########   odam.nl         */
+/*   Updated: 2024/11/01 10:06:18 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	Account::displayAccountsInfos(void)
 
 void	Account::makeDeposit(int deposit)
 {
-	// _displayTimestamp();
+	_displayTimestamp();
 	_nbDeposits++;
 	_amount += deposit;
-	// std::cout << "index: " << _accountIndex << "; Deposit of: " << deposit << "; new amount:" << _amount << std::endl;
+	std::cout << "index: " << _accountIndex << "; Deposit of: " << deposit << "; new amount:" << _amount << std::endl;
 	_totalNbDeposits++;
 	_totalAmount += deposit;
 }
@@ -101,13 +101,10 @@ int		Account::checkAmount(void) const
 
 void	Account::displayStatus(void) const
 {
-	// std::cout << "Display Status:" << std::endl;
-	// std::cout << "---------------" << std::endl;
 	_displayTimestamp();
-	std::cout << "index: " << _accountIndex << "; amount: " << _amount;
+	std::cout << "STATUS: index: " << _accountIndex << "; amount: " << _amount;
 	std::cout << "; nb_deposit: " << _nbDeposits << "; nb_withdrawals:" << _nbWithdrawals;
 	std::cout << std::endl;
-	// std::cout << "---------------" << std::endl;
 }
 
 void	Account::_displayTimestamp( void )
