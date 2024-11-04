@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:28:34 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/31 13:37:16 by natalia       ########   odam.nl         */
+/*   Updated: 2024/11/01 10:14:18 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,32 @@ Contact::~Contact()
 {
 }
 
-std::string Contact::GetFirstName()
+std::string	Contact::GetFirstName()
 {
 	return(this->firstName);
 }
 
-std::string Contact::GetLastName()
+std::string	Contact::GetLastName()
 {
 	return (this->lastName);
 }
 
-std::string Contact::GetNickname()
+std::string	Contact::GetNickname()
 {
 	return (this->nickname);
 }
 
-std::string Contact::GetPhoneNumber()
+std::string	Contact::GetPhoneNumber()
 {
 	return (this->phoneNumber);
 }
 
-std::string Contact::GetSecret()
+std::string	Contact::GetSecret()
 {
 	return (this->darkestSecret);
 }
 
-int Contact::GetIndex()
+int	Contact::GetIndex()
 {
 	return (this->index);
 }

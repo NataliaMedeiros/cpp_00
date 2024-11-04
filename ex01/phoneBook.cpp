@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:49:02 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/31 13:38:35 by natalia       ########   odam.nl         */
+/*   Updated: 2024/11/04 14:20:32 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,34 +33,32 @@ PhoneBook::~PhoneBook()
 {
 	std::cout << "***Finishing the Phonebook";
 }
+
+static std::string	GetField(std::string var)
+{
+	std::string	fieldValue;
+
+	while(fieldValue.empty())
+	{
+		std::cout << var << ": ", std::getline(std::cin, fieldValue);
+		if (fieldValue.empty())
+			std::cout << var << " cannot be empty. Please try again." << std::endl;
+	}
+	return (fieldValue);
+}
+
 void PhoneBook::Add()
 {
 	std::string firstName, lastName, nickname, phoneNumber, secret, res;
 	int i;
 
-	i = (index % 8 - 1) < 0 ? 7 : index % 8 -1; //if else condition in just one line
-	// i = index % 8 - 1;
-	// if (i < 0)
-	// 	i = 7;
-	// if (index > 8)
-	// {
-		// std::cout << "The phonebook is full, the oldest contact will be replaced" << std::endl;
-		// std::cout << "The phonebook is full, do you want to replace the oldest contact?(yes/no)" << std::endl;
-		// std::cin >> res;
-		// while (res != "yes" && res != "no")
-		// {
-		// 	std::cout << "Type yes or no" <<std::endl;
-		// 	std::cin >> res;
-		// }
-		// if (res == "no")
-		// 	return ;
-	// }
+	i = (index % 8 - 1) < 0 ? 7 : index % 8 -1;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cout << "First Name: ", std::getline(std::cin, firstName);
-	std::cout << "Last Name: ", std::getline(std::cin, lastName);
-	std::cout << "Nickname: ", std::getline(std::cin, nickname);
-	std::cout << "Phone Number: ", std::getline(std::cin, phoneNumber);
-	std::cout << "Darkest Secret: ", std::getline(std::cin, secret);
+	firstName = GetField("First Name");
+	lastName = GetField("Last name");
+	nickname = GetField("Nickname");
+	phoneNumber = GetField("Phone Number");
+	secret = GetField("Darkest Secret");
 
 	this->contactList[i].SetIndex(index);
 	this->contactList[i].SetFirstName(firstName);

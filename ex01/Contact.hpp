@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:10:04 by natalia       #+#    #+#                 */
-/*   Updated: 2024/10/31 13:37:48 by natalia       ########   odam.nl         */
+/*   Updated: 2024/11/01 10:09:06 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CONTACT_HPP
 
 #include <iostream>
-
 
 class Contact
 {
