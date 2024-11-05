@@ -6,7 +6,7 @@
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:49:02 by natalia       #+#    #+#                 */
-/*   Updated: 2024/11/05 19:23:24 by natalia       ########   odam.nl         */
+/*   Updated: 2024/11/05 19:57:25 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,38 @@ void PhoneBook::AddContact(std::string firstName, std::string lastName, std::str
 
 void PhoneBook::Search()
 {
-	int	contact_index;
-	int	i;
+	int	contactIndex;
+	bool contactFound = false;
 
-	if (contactList[0].GetFirstName().empty())
+	if (index == 1)
 	{
 		std::cout << "The PhoneBook is currently empty" << std::endl;
 		return ;
 	}
 	this->Print();
-	std::cout << "Provide the Contact's index you want to: ", std::cin >> contact_index;
-	i = (contact_index % 8 - 1) < 0 ? 7 : contact_index % 8 -1;
-	if (contactList[i].GetFirstName().empty())
+	std::cout << "Provide the Contact's index you want the details: ";
+	while (!(std::cin >> contactIndex))
+	{
+		std::cout << "Invalid input. Please enter a valid contact index number: ";
+		std::cin.clear(); // Clear the error flag on cin
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+	}
+	for (int i = 0; i < 8; i++)
+	{
+		if (contactList[i].GetIndex() == contactIndex) {
+			contactList[i].Print();
+			contactFound = true;
+		}
+	}
+	if (!contactFound)
 		std::cout << "This contact's index is empty" << std::endl;
-	else
-		contactList[i].Print();
 }
 
 void PhoneBook::Print()
 {
-	int	i;
-
-	i = 0;
 	std::cout << "   Index  |First Name| Last Name| Nickname |" << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
-	while (i < index - 1)
+	for (int i = 0; i < 8 && i < (index - 1); i++)
 	{
 		Resize(std::to_string(contactList[i].GetIndex()));
 		std::cout << "|";
@@ -81,6 +88,5 @@ void PhoneBook::Print()
 		std::cout << "|";
 		std::cout << std::endl;
 		std::cout << "-----------------------------------------" << std::endl;
-		i++;
 	}
 }

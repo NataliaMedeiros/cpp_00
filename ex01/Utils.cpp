@@ -4,12 +4,12 @@ static std::string	GetFieldInput(std::string fieldName)
 {
 	std::string	fieldValue;
 
-	while(fieldValue.empty())
+	do
 	{
 		std::cout << fieldName << ": ", std::getline(std::cin, fieldValue);
 		if (fieldValue.empty())
 			std::cout << fieldName << " cannot be empty. Please try again." << std::endl;
-	}
+	} while(fieldValue.empty());
 	return (fieldValue);
 }
 
