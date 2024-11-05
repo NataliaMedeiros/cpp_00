@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   PhoneBook.cpp                                      :+:    :+:            */
+/*   phoneBook.cpp                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: natalia <natalia@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/30 13:49:02 by natalia       #+#    #+#                 */
-/*   Updated: 2024/11/04 14:20:32 by natalia       ########   odam.nl         */
+/*   Updated: 2024/11/05 19:23:24 by natalia       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,42 +31,15 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << "***Finishing the Phonebook";
+	std::cout << "***Finishing the Phonebook" << std::endl;
 }
 
-static std::string	GetField(std::string var)
+void PhoneBook::AddContact(std::string firstName, std::string lastName, std::string nickname,
+						std::string phoneNumber, std::string darkestSecret)
 {
-	std::string	fieldValue;
+	int i = (index % 8 - 1) < 0 ? 7 : index % 8 -1;
 
-	while(fieldValue.empty())
-	{
-		std::cout << var << ": ", std::getline(std::cin, fieldValue);
-		if (fieldValue.empty())
-			std::cout << var << " cannot be empty. Please try again." << std::endl;
-	}
-	return (fieldValue);
-}
-
-void PhoneBook::Add()
-{
-	std::string firstName, lastName, nickname, phoneNumber, secret, res;
-	int i;
-
-	i = (index % 8 - 1) < 0 ? 7 : index % 8 -1;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	firstName = GetField("First Name");
-	lastName = GetField("Last name");
-	nickname = GetField("Nickname");
-	phoneNumber = GetField("Phone Number");
-	secret = GetField("Darkest Secret");
-
-	this->contactList[i].SetIndex(index);
-	this->contactList[i].SetFirstName(firstName);
-	this->contactList[i].SetLastName(lastName);
-	this->contactList[i].SetNickname(nickname);
-	this->contactList[i].SetPhoneNumber(phoneNumber);
-	this->contactList[i].SetSecret(secret);
-
+	this->contactList[i] = Contact(index, firstName, lastName, nickname, phoneNumber, darkestSecret);
 	index++;
 }
 
@@ -80,16 +53,16 @@ void PhoneBook::Search()
 		std::cout << "The PhoneBook is currently empty" << std::endl;
 		return ;
 	}
-	this->PrintContacts();
+	this->Print();
 	std::cout << "Provide the Contact's index you want to: ", std::cin >> contact_index;
 	i = (contact_index % 8 - 1) < 0 ? 7 : contact_index % 8 -1;
 	if (contactList[i].GetFirstName().empty())
 		std::cout << "This contact's index is empty" << std::endl;
 	else
-		contactList[i].PrintContact();
+		contactList[i].Print();
 }
 
-void PhoneBook::PrintContacts()
+void PhoneBook::Print()
 {
 	int	i;
 
@@ -98,13 +71,13 @@ void PhoneBook::PrintContacts()
 	std::cout << "--------------------------------------------" << std::endl;
 	while (i < index - 1)
 	{
-		contactList[i].Resize(std::to_string(contactList[i].GetIndex()));
+		Resize(std::to_string(contactList[i].GetIndex()));
 		std::cout << "|";
-		contactList[i].Resize(contactList[i].GetFirstName());
+		Resize(contactList[i].GetFirstName());
 		std::cout << "|";
-		contactList[i].Resize(contactList[i].GetLastName());
+		Resize(contactList[i].GetLastName());
 		std::cout << "|";
-		contactList[i].Resize(contactList[i].GetNickname());
+		Resize(contactList[i].GetNickname());
 		std::cout << "|";
 		std::cout << std::endl;
 		std::cout << "-----------------------------------------" << std::endl;
